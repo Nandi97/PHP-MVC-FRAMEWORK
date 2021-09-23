@@ -1,15 +1,15 @@
 {
     "name": "intern/php-mvc-framework",
-    "autoload": {
-        "psr-4": {
-            "app\\": "./"
-        }
-    },
     "authors": [
         {
             "name": "Alvin Maina",
             "email": "cartezalvin@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
     "require": {}
 }
