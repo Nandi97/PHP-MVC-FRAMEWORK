@@ -1,6 +1,9 @@
 <?php
 /** User; Alvin Kigen */
 namespace app\controllers;
+
+use app\core\Application;
+
 /**
  * Class siteController
  * 
@@ -12,7 +15,7 @@ class SiteController
 
   public static function contact()
   {
-    return 'Handling submitter data';
+    return Application::$app->router->renderView('contact');
   }
 
   public static function handleContact()
