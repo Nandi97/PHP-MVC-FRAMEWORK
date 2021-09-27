@@ -1,4 +1,7 @@
 <h1>Create an account</h1>
+<?php echo \app\core\form\Form::begin('', "post")?>
+echo
+<?php \app\core\form\Form::end() ?>
 <form action="" method="post">
   <div class="row">
     <div class="col">
