@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\core\Application;
+use app\core\Controller;
 
 /**
  * Class siteController
@@ -10,12 +11,20 @@ use app\core\Application;
  * @author Alvin Kigen <cartezalvin@gmail.com>
  * @package app\controllers
  */
-class SiteController
+class SiteController extends Controller
 {
 
-  public static function contact()
+  public function home()
   {
-    return Application::$app->router->renderView('contact');
+    $params = [
+      'name' => "Alvin Kigen"
+    ];
+    return $this->render('home', $params);
+  }
+
+  public function contact()
+  {
+    return $this->render('contact');
   }
 
   public static function handleContact()
