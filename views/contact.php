@@ -2,11 +2,11 @@
 <form action="" method="post">
   <div class="mb-3">
     <label>Subject</label>
-    <input type="email" name="subject"class="form-control" >
+    <input type="subject" name="subject"class="form-control" >
   </div>
   <div class="mb-3">
     <label>Email</label>
-    <input type="password" name="email" class="form-control">
+    <input type="email" name="email" class="form-control">
   </div>
   <div class="mb-3">
     <label>Body</label>

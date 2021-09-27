@@ -1,9 +1,12 @@
 <?php
+
 /** User; Alvin Kigen */
+
 namespace app\controllers;
 
 use app\core\Application;
 use app\core\Controller;
+use app\core\Request;
 
 /**
  * Class siteController
@@ -27,8 +30,13 @@ class SiteController extends Controller
     return $this->render('contact');
   }
 
-  public static function handleContact()
+  public static function handleContact(Request $request)
   {
-    return 'Handling submitter data';
+    $body = $request->getBody();
+    echo'<pre>';
+    var_dump($body);
+    echo'</pre>';
+    exit;
+    return 'Handling submitted data';
   }
 }
