@@ -1,8 +1,14 @@
 <?php
 
-/** User:Alvin Kigen */
+/** User:Alvin Kigen 
+ * 
+ * 
+ */
 
 namespace app\core;
+
+
+use app\core\Application;
 
 /**
  * Class Database
@@ -18,14 +24,11 @@ class Database
    */
   public function __construct(array $config)
   {
-    $db_type = $config['db_type'] ?? '';
-    $db_host = $config['db_host'] ?? '';
-    $db_port = $config['db_port'] ?? '';
-    $db_name = $config['db_name'] ?? '';
-    $db_user = $config['db_user'] ?? '';
-    $db_pass = $config['db_pass'] ?? '';
-    $dsn = $db_type . ':host=' . $db_host . ';port=' . $db_port . ';dbname=' . $db_name;
-    $this->pdo = new \PDO($dsn, $db_user, $db_pass);
+    $dbDsn = $config['dsn'] ?? '';
+    $username = $config['user'] ?? '';
+    $password = $config['password'] ?? '';
+
+    $this->pdo = new \PDO($dbDsn, $username, $password);
     $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
   }
 
