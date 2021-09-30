@@ -6,7 +6,7 @@ namespace app\models;
 
 
 use app\core\DbModel;
-use app\core\Model;
+use app\core\UserModel;
 
 /**
  * Class User
@@ -14,7 +14,7 @@ use app\core\Model;
  * @author Alvin Kigen <cartezalvin@gmail.com>
  * @package app\models
  */
-class User extends DbModel
+class User extends UserModel
 {
   const STATUS_INACTIVE = 0;
   const STATUS_ACTIVE = 1;
@@ -27,9 +27,13 @@ class User extends DbModel
   public string $password = '';
   public string $confirmPassword = '';
 
-  public function tableName(): string
+  public static function tableName(): string
   {
     return 'users';
+  }
+
+  public function primaryKey(): string
+  {
   }
 
   public function save()
@@ -67,5 +71,10 @@ class User extends DbModel
       'confirmPassword' => 'Confirm password',
 
     ];
+  }
+
+  public function getDisplayName(): string
+  {
+    return $this->firstname . ' ' . $this->lastname;
   }
 }
