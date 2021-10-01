@@ -34,6 +34,7 @@ class User extends UserModel
 
   public function primaryKey(): string
   {
+    return true;
   }
 
   public function save()
