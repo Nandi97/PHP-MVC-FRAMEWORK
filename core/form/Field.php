@@ -12,11 +12,11 @@ use app\core\Model;
  * @author Alvin Kigen <cartezalvin@gmail.com>
  * @package app\core\form
  */
-class InputField extends BaseField
+class Field extends BaseField
 {
-  public const  TYPE_TEXT = 'text';
-  public const  TYPE_PASSWORD = 'password';
-  public const  TYPE_NUMBER = 'number';
+        const  TYPE_TEXT = 'text';
+      const  TYPE_PASSWORD = 'password';
+       const  TYPE_NUMBER = 'number';
 
   public string $type;
 
