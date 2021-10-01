@@ -6,7 +6,7 @@
  * Time: 10:20 AM
  */
 
-namespace app\core;
+namespace app\core\db;
 
 use app\core\Application;
 use app\core\Model;
