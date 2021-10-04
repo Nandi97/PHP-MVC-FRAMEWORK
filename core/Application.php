@@ -18,6 +18,7 @@ class Application
 {
   public static string $ROOT_DIR;
 
+  public static Application $app;
   public string $layout = 'main';
   public string $userClass;
   public Router $router;
@@ -29,8 +30,8 @@ class Application
   public ?UserModel $user;
   public View $view;
 
-  public static Application $app;
-  public function __construct($rootPath, array $config)
+
+  public function __construct($rootPath, $config)
   {
     $this->user = null;
     $this->userClass = $config['userClass'];
@@ -40,21 +41,21 @@ class Application
     $this->response = new Response();
     $this->session = new Session();
     $this->router = new Router($this->request, $this->response);
+    $this->db = new Database($config['db']);
     $this->view = new View();
 
-    $this->db = new Database($config['db']);
 
-    $primaryValue = $this->session->get('user');
-    if ($primaryValue) {
+    $value = $this->session->get('user');
+    if ($value) {
       $primaryKey = $this->userClass::primaryKey();
-      $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]);
-    } else {
-      $this->user = null;
+      $this->user = $this->userClass::findOne([$primaryKey => $value]);
     }
   }
-
   public static function isGuest()
   {
+    // echo '<pre>';
+    // var_dump(self::$app->user);
+    // echo '</pre>';
     return !self::$app->user;
   }
 
@@ -85,12 +86,13 @@ class Application
   {
     $this->controller = $controller;
   }
+
   public function login(UserModel $user)
   {
     $this->user = $user;
     $primaryKey = $user->primaryKey();
-    $primaryValue = $user->{$primaryKey};
-    $this->session->set('user', $primaryValue);
+    $this->session->set('user', $primaryKey);
+
     return true;
   }
 

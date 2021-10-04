@@ -4,8 +4,6 @@
 
 namespace app\models;
 
-
-use app\core\DbModel;
 use app\core\UserModel;
 
 /**
@@ -32,9 +30,9 @@ class User extends UserModel
     return 'users';
   }
 
-  public function primaryKey(): string
+  public static function primaryKey(): string
   {
-    return true;
+    return 'id';
   }
 
   public function save()
@@ -77,5 +75,10 @@ class User extends UserModel
   public function getDisplayName(): string
   {
     return $this->firstname . ' ' . $this->lastname;
+  }
+
+  public function getFirstName(): string
+  {
+    return $this->firstname;
   }
 }

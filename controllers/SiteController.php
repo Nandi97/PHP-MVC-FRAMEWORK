@@ -21,9 +21,13 @@ class SiteController extends Controller
 
   public function home()
   {
+    // $user = Application::$app->user;
+    // $name = '';
+    // $user ? $name = $user->getDisplayName() : '';
     $params = [
-      'name' => "Alvin Kigen"
+      'name' => 'Alvin Kigen'
     ];
+
     return $this->render('home', $params);
   }
 
@@ -32,6 +36,7 @@ class SiteController extends Controller
     $contact = new ContactForm();
     if ($request->isPost()) {
       $contact->loadData($request->getBody());
+
       if ($contact->validate() && $contact->send()) {
         Application::$app->session->setFlash('success', 'Thanks for contacting us');
         return $response->redirect('/contact');
